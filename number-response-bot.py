@@ -1,21 +1,23 @@
-import logging
-
-logging.basicConfig(level=logging.INFO)
-import asyncio
 import discord
 from discord.ext import commands
+import asyncio
 import random
 
-description = "A bot for guessing numbers."
-
 client = discord.Client()
-client.login('token')
-client.token = "###"
+
+description = "A bot for guessing numbers."
 
 bot = commands.Bot(command_prefix='g!', description=description)
 
 @client.event
 async def on_ready():
-    print('logged in ')
+    print('Logged in as')
+    print(client.user.name)
+    print(client.user.id)
+    print('------')
 
-bot.run('token')
+@bot.command()
+async def ping():
+    await bot.say('Pong! Hello!')
+
+bot.run('token_here')
