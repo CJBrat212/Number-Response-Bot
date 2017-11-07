@@ -21,13 +21,16 @@ async def on_message(message):
     if message.content.startswith('start'):
         await client.send_message(message.channel, 'Beginning program. ' )
         y = 0
-        z = 100000
+        z = 10000
         state = True
         while(state == True):
-            await client.send_message(message.channel, 'g!start' )
+            await client.send_message(message.channel, 'g!start easy' )
+            number = random.randint(y, z)
+            await client.send_message(message.channel, 'g!guess ' + str(number))
+            number = random.randint(y, z)
+            await client.send_message(message.channel, 'g!guess ' + str(number))
             number = random.randint(y, z)
             await client.send_message(message.channel, 'g!guess ' + str(number))
             await client.send_message(message.channel, 'g!stop' )
             await asyncio.sleep(2)
-
 client.run('user', 'pass')
