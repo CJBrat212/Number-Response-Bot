@@ -20,24 +20,14 @@ async def on_message(message):
         await client.send_message(message.channel, 'what')
     if message.content.startswith('start'):
         await client.send_message(message.channel, 'Beginning program. ' )
-        await client.send_message(message.channel, 'g!start' )
         y = 0
         z = 100000
         state = True
         while(state == True):
-            hl = True
+            await client.send_message(message.channel, 'g!start' )
             number = random.randint(y, z)
             await client.send_message(message.channel, 'g!guess ' + str(number))
-            async def on_message(message):
-                if message.content.contains('**Higher!**'):
-                    y += 1000
-                    hl = True
-                if message.content.startswith('**Lower!**'):
-                    z -= 1000
-                    hl = False
-                if message.content.startswith('!Stop'):
-                    state = False
-            await client.send_message(message.channel, str(y) + ' and ' + str(z) + ' and ' + str(hl))
-        await client.send_message(message.channel, 'g!stop' )
+            await client.send_message(message.channel, 'g!stop' )
+            await asyncio.sleep(2)
 
-client.run('user', 'password')
+client.run('user', 'pass')
